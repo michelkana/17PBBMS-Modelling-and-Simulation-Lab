@@ -1,0 +1,34 @@
+CC     = "c:\program files\matlab\r2007a\sys\lcc\bin\lcc.exe"
+LD     = "c:\program files\matlab\r2007a\sys\lcc\bin\lcclnk.exe"
+LIBCMD = "c:\program files\matlab\r2007a\sys\lcc\bin\lcclib.exe"
+CFLAGS = -c -Zp8 -DMATLAB_MEX_FILE -noregistrylookup
+LDFLAGS = -s -dll -L"c:\program files\matlab\r2007a\sys\lcc\lib"
+LIBFLAGS = 
+
+OBJECTS = \
+	"cardiovascular_control_sfun.obj"\
+	"cardiovascular_control_sfun_registry.obj"\
+	"c2_cardiovascular_control.obj"\
+	"lccstub.obj"\
+	"c:\program files\matlab\r2007a\sys\lcc\mex\lccdef.def"\
+	"c:\program files\matlab\r2007a\stateflow\c\debugger\lib\win32\sfc_debuglcc.lib"\
+	"c:\program files\matlab\r2007a\stateflow\c\mex\lib\win32\sfc_mexlcc.lib"\
+	"c:\program files\matlab\r2007a\extern\lib\win32\lcc\libmex.lib"\
+	"c:\program files\matlab\r2007a\extern\lib\win32\lcc\libmx.lib"\
+	"c:\program files\matlab\r2007a\extern\lib\win32\lcc\libfixedpoint.lib"\
+	"c:\program files\matlab\r2007a\extern\lib\win32\lcc\libut.lib"\
+	"c:\program files\matlab\r2007a\toolbox\dspblks\lib\win32\dsp_dyn_rt_lcc.lib"\
+
+INCLUDE_PATH= -I"c:\program files\matlab\r2007a\sys\lcc\include"  -I"c:\program files\matlab\r2007a\extern\include"  -I"c:\program files\matlab\r2007a\simulink\include"  -I"c:\program files\matlab\r2007a\stateflow\c\mex\include"  -I"c:\program files\matlab\r2007a\stateflow\c\debugger\include"  -I"c:\program files\matlab\r2007a\toolbox\eml\lib\dsp"  -I"d:\documents and settings\mxkana\my documents\_private\dr\ss10\simulation\cardiovascular\ocenaskova_cejka_kotenova_klejchova\sfprj\build\cardiovascular_control\sfun\src"  -I"d:\documents and settings\mxkana\my documents\_private\dr\ss10\simulation\cardiovascular\ocenaskova_cejka_kotenova_klejchova"  -I"d:\documents and settings\mxkana\my documents\_private\dr\research\thesis\matlab" 
+ 
+
+cardiovascular_control_sfun.mexw32 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o cardiovascular_control_sfun.mexw32 @cardiovascular_control_sfun.lmko
+cardiovascular_control_sfun.obj :	"cardiovascular_control_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "cardiovascular_control_sfun.c"
+cardiovascular_control_sfun_registry.obj :	"cardiovascular_control_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "cardiovascular_control_sfun_registry.c"
+c2_cardiovascular_control.obj :	"c2_cardiovascular_control.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c2_cardiovascular_control.c"
+lccstub.obj :	"c:\program files\matlab\r2007a\sys\lcc\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c:\program files\matlab\r2007a\sys\lcc\mex\lccstub.c"
